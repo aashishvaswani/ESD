@@ -13,6 +13,20 @@ public record CustomerRequest(
         @JsonProperty("last_name")
         String lastName,
 
+        @NotNull(message = "Address is required")
+        @NotEmpty(message = "Address should not be empty")
+        @JsonProperty("address")
+        String address,
+
+        @NotNull(message = "City is required")
+        @NotEmpty(message = "City should not be empty")
+        @JsonProperty("city")
+        String city,
+
+        @JsonProperty("pincode")
+        @Pattern(regexp = "\\d{6}", message = "Pincode must be exactly 6 digits")
+        String pincode,
+
         @NotNull(message="Customer email is required")
         @Email(message = "Email must be in correct format")
         @JsonProperty("email")
